@@ -82,8 +82,8 @@ public class room3 extends JFrame implements Room{
         BedB.addActionListener(e -> {
             JFrame bedFrame = new JFrame("1000원씩 비싸지는 침대");
             bedFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 부모 창만 종료
-            BedPanel bedPanel = new BedPanel(this);//AnimalPanel클래스를 선언하고 room3객체를 전달
-            bedFrame.add(bedPanel);//애니멀프레임 창에 animalPanel을 추가
+            BedPanel BedPanel = new BedPanel(this);//AnimalPanel클래스를 선언하고 room3객체를 전달
+            bedFrame.add(BedPanel);//애니멀프레임 창에 animalPanel을 추가
             bedFrame.pack();//컨테이너의 크기 조정
             bedFrame.setVisible(true);
             bedFrame.setLocation(0,380);

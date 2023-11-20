@@ -20,5 +20,13 @@ public interface Room {
     }
     public default void setChairIcon(ImageIcon icon){
     }
+    public default void setTIcon(ImageIcon icon){
+    }
+    public default void setShowerIcon(ImageIcon icon){
+    }
+    public default void setSinkIcon(ImageIcon icon){
+    }
+    public default void setTableIcon(ImageIcon icon){
+    }
 
 }

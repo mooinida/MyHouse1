@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class BedPanel extends JPanel {
+public class SinkPanel extends JPanel {
 
     private JButton[] buttons;
     private ImageIcon[] icons;
@@ -12,14 +12,14 @@ public class BedPanel extends JPanel {
     private int check;
     private JLabel explain;
 
-    public BedPanel(Room room) {//AnimalPanel 클래스는 room3 객체를 전달받아 room3와 상호작요 할 수 있다. 이걸로 인해 room3의 버튼에 이미지를 씌울수 있다.
+    public SinkPanel(Room room) {//AnimalPanel 클래스는 room3 객체를 전달받아 room3와 상호작요 할 수 있다. 이걸로 인해 room3의 버튼에 이미지를 씌울수 있다.
         this.room=  room;
         setLayout(new GridLayout(2, 3, 10, 10));
         buttons = new JButton[7];
         icons = new ImageIcon[6];
 
         for (int i = 0; i < 6; i++) {
-            String imagePath = "img/침대" + (i + 1) + ".png";//버튼마다 각각 다른 이미지를 넣어준다
+            String imagePath = "img/sink" + (i + 1) + ".png";//버튼마다 각각 다른 이미지를 넣어준다
             icons[i] = createResized(imagePath, 150, 150);//가로 세로 100으로 넣어준다.
             buttons[i] = new JButton(icons[i]);//버튼에 이미지를 넣어준다
             buttons[i].setBackground(Color.WHITE);//백그라운드는 하얀색으로
@@ -31,21 +31,21 @@ public class BedPanel extends JPanel {
 
         buttons[6].addActionListener(e->{if (room.getSizecheck()==1){//확대할때
 
-            int newWidth = 310; // 변경할 이미지의 너비
-            int newHeight = 160; // 변경할 이미지의 높이
+            int newWidth = 730; // 변경할 이미지의 너비
+            int newHeight = 370; // 변경할 이미지의 높이
 
             ImageIcon resizedIcon = resizeImageIcon(save, newWidth, newHeight);
-            room.setBedIcon(resizedIcon);
+            room.setSinkIcon(resizedIcon);
 
 
         }
         else if(room.getSizecheck()==0){//축소할 때
 
-            int newWidth = 250; // 변경할 이미지의 너비
-            int newHeight = 120; // 변경할 이미지의 높이
+            int newWidth = 500; // 변경할 이미지의 너비
+            int newHeight = 275; // 변경할 이미지의 높이
 
             ImageIcon resizedIcon = resizeImageIcon(save, newWidth, newHeight);
-            room.setBedIcon(resizedIcon); // room3 클래스의 AnimalB 버튼에 아이콘(이미지임)을 설정하는 메서드 호출
+            room.setSinkIcon(resizedIcon); // room3 클래스의 AnimalB 버튼에 아이콘(이미지임)을 설정하는 메서드 호출
 
         }
 
@@ -62,7 +62,7 @@ public class BedPanel extends JPanel {
             });
         }
 
-        explain= new JLabel("각 침대는 1000씩 비싸집니다."); // 추가된 부분
+        explain= new JLabel("각 싱크대는 30000씩 비싸집니다."); // 추가된 부분
 
         add(explain); // 추가된 부분
     }
@@ -93,23 +93,23 @@ public class BedPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             int ivalue=this.index;
 
-            if (room.getSizecheck()==1 && ControlMoney.money>=((ivalue+1)*1000)){//room3가 확대되어 있는 상태일 때.
-                ControlMoney.money-=((ivalue+1)*1000);
+            if (room.getSizecheck()==1 && ControlMoney.money>=((ivalue+1)*30000)){//room3가 확대되어 있는 상태일 때.
+                ControlMoney.money-=((ivalue+1)*30000);
                 ControlMoney.MoneyLabel.setText("Money "+ControlMoney.money);
                 save=icon;
-                int newWidth = 310; // 변경할 이미지의 너비
-                int newHeight = 160; // 변경할 이미지의 높이
+                int newWidth = 735; // 변경할 이미지의 너비
+                int newHeight = 370; // 변경할 이미지의 높이
                 ImageIcon resizedIcon = resizeImageIcon(icon, newWidth, newHeight);
-                room.setBedIcon(resizedIcon);
+                room.setSinkIcon(resizedIcon);
             }
-            else if(room.getSizecheck()==0 && ControlMoney.money>=((ivalue+1)*1000)){//room이 축소 되어있는 상태일 때
-                ControlMoney.money-=((ivalue+1)*1000);
+            else if(room.getSizecheck()==0 && ControlMoney.money>=((ivalue+1)*30000)){//room이 축소 되어있는 상태일 때
+                ControlMoney.money-=((ivalue+1)*30000);
                 ControlMoney.MoneyLabel.setText("Money "+ControlMoney.money);
                 save=icon;
-                int newWidth = 250; // 변경할 이미지의 너비
-                int newHeight = 120; // 변경할 이미지의 높이
+                int newWidth = 500; // 변경할 이미지의 너비
+                int newHeight = 275; // 변경할 이미지의 높이
                 ImageIcon resizedIcon = resizeImageIcon(icon, newWidth, newHeight);
-                room.setBedIcon(resizedIcon); // room 클래스의 BedB 버튼에 아이콘(이미지임)을 설정하는 메서드 호출
+                room.setSinkIcon(resizedIcon); // room 클래스의 BedB 버튼에 아이콘(이미지임)을 설정하는 메서드 호출
             }
 
 
