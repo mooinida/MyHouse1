@@ -7,7 +7,6 @@ public class AnimalPanel extends JPanel {
     private JButton[] buttons;
     private ImageIcon[] icons;
     private Room room;
-    private JButton displayButton;
     private ImageIcon save;
     private int check;
 

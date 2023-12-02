@@ -11,6 +11,7 @@ public class Lotto extends JFrame {
     private int answerCount;
     private int submitcnt;
     private int LottoMoney=0;//로또에서 얻은 돈을 나타내준다.
+    private JLabel luckyBag;
 
 
     public Lotto(){
@@ -18,6 +19,10 @@ public class Lotto extends JFrame {
         setLocation(0, 0);
         setLayout(null);
         num=new int[6];
+
+        luckyBag=new JLabel("획득한 Money : "+LottoMoney);
+        luckyBag.setBounds(540,420,200,200);
+        add(luckyBag);
 
         ImageIcon lotto= new ImageIcon("img/돈주머니.png");
         Image img=lotto.getImage();
@@ -79,14 +84,10 @@ public class Lotto extends JFrame {
                     num[i]=(int)(Math.random()*45)+1;
                     System.out.println(num[i]);
                 }
-                b1.setText("A");
-                b2.setText("B");
-                b3.setText("C");
-                b4.setText("D");
-                b5.setText("E");
-                b6.setText("F");
+                setAlphabet();
                 submitB.setEnabled(true);
                 submitcnt=0;
+                start.setEnabled(false);
             }
             else{
                 error.setText("잔액 부족!!");
@@ -95,7 +96,7 @@ public class Lotto extends JFrame {
         add(start);
 
         answer=new JLabel("맞춘 갯수 : "+answerCount);
-        answer.setBounds(220,600,60,30);
+        answer.setBounds(220,600,100,30);
         add(answer);
 
         submitB=new JButton("제출");
@@ -117,17 +118,49 @@ public class Lotto extends JFrame {
                 LottoMoney+=answerCount*10000;
                 System.out.println(LottoMoney);
                 submitcnt++;
-                answer.setText("정답 횟수"+answerCount);
+                answer.setText("맞춘 갯수 : "+answerCount);
                 submitB.setEnabled(false);
                 error.setText("로또가 종료되었습니다. 다시 시작해주십시오.");
+                luckyBag.setText("획득한 Money : "+LottoMoney);
+                b1.setText(""+num[1]);
+                b1.setFont(new Font("Serif",Font.BOLD,103));
+                b2.setText(""+num[2]);b2.setFont(new Font("Serif",Font.BOLD,40));
+                b3.setText(""+num[3]);b3.setFont(new Font("Serif",Font.BOLD,90));
+                b4.setText(""+num[4]);b4.setFont(new Font("Serif",Font.BOLD,70));
+                b5.setText(""+num[5]);b5.setFont(new Font("Serif",Font.BOLD,25));
+                b6.setText(""+num[0]);b6.setFont(new Font("Serif",Font.BOLD,50));
+                start.setEnabled(true);
+
             }
 
         });
         add(submitB);
 
 
+
         setSize(700,700);
         setVisible(true);
+
+    }
+    public void setAlphabet(){
+        b1.setText("A");
+        b1.setFont(new Font("Serif",Font.BOLD,123));
+
+        b2.setText("B");
+        b2.setFont(new Font("Serif",Font.BOLD,80));
+
+        b3.setText("C");
+        b3.setFont(new Font("Serif",Font.BOLD,130));
+
+
+        b4.setText("D");
+        b4.setFont(new Font("Serif",Font.BOLD,100));
+
+        b5.setText("E");
+        b5.setFont(new Font("Serif",Font.BOLD,45));
+
+        b6.setText("F");
+        b6.setFont(new Font("Serif",Font.BOLD,90));
 
     }
     public void paint(Graphics g){

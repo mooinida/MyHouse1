@@ -21,6 +21,8 @@ public class room1 extends JFrame implements Room{
         setLocation(0, 0);
         setLayout(null);
 
+
+
         button = new JButton("확대");
         button.setBounds(10, 10, 60, 30);
 

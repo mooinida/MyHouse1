@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+
+
+
 public class Animal extends JFrame {
 
     public Animal(){
@@ -30,5 +33,12 @@ public class Animal extends JFrame {
     }
     public static void main(String[] args) {
         new Animal();
+    }
+
+    boolean checkMeetBB(int bx, int by, int bwidth, int bheight, int bx1, int by1, int b1width, int b1height) {
+        return bx < bx1 + b1width && bx + bwidth > bx1 && by < by1 + b1height && by + bheight > by1;
+    }
+    int pp(){
+        return 100;
     }
 }
